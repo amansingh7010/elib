@@ -22,6 +22,8 @@
 
 	let { href, onclick, isSecondary, isDanger, isMenu, children, ...props }: ComponentProps =
 		$props();
+
+	console.log(isMenu);
 </script>
 
 {#if href}
