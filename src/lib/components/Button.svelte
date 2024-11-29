@@ -9,8 +9,9 @@
 	}
 
 	interface ButtonProps extends BasicProps {
-		onclick: (e: MouseEvent) => void;
+		onclick?: (e: MouseEvent) => void;
 		href?: never;
+		type?: 'submit' | 'button';
 	}
 
 	interface LinkProps extends BasicProps {
@@ -22,8 +23,6 @@
 
 	let { href, onclick, isSecondary, isDanger, isMenu, children, ...props }: ComponentProps =
 		$props();
-
-	console.log(isMenu);
 </script>
 
 {#if href}
