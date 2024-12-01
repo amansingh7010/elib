@@ -14,7 +14,7 @@
 <div class="default-margin auth-container">
 	<h1 class="mb-l">{isRegistration ? 'Register' : 'Login'}</h1>
 	<div class="form-and-social-login">
-		<form class="auth-form" method="POST" use:enhance>
+		<form class="auth-form" method="POST">
 			{#if form && form.errors?.length}
 				{#each form.errors as error}
 					<div class="auth-error">
