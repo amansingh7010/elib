@@ -49,18 +49,27 @@ export const actions = {
 		}
 
 		// Registration Flow
-		const { error } = await supabase.auth.signUp({
+		const { data, error } = await supabase.auth.signUp({
 			email,
 			password
 		});
 
-		if (error) {
+		if (error || !data.user) {
 			returnObject.success = false;
 
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
 			return fail(400, returnObject);
 		}
+
+		const userId = data.user.id;
+
+		await supabase.from('user_names').insert([
+			{
+				user_id: userId,
+				name
+			}
+		]);
 
 		redirect(303, '/private/dashboard');
 	}
